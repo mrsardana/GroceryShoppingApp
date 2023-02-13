@@ -32,12 +32,12 @@ const GetStarted = ({navigation}) => {
             textAlign: 'center',
           }}
           onPress={() => navigation.navigate('Login')}>
-          <Text 
+          <Text
             style={{
-            fontSize: 18,
-            fontFamily: fonts.Medium,
-            color: colors.white,
-            textAlign: 'center',
+              fontSize: 18,
+              fontFamily: fonts.Medium,
+              color: colors.white,
+              textAlign: 'center',
             }}>
             Get Started
           </Text>
