@@ -11,75 +11,138 @@ import {colors} from '../../res/colors';
 import {fonts} from '../../res/fonts';
 import {IL_Background} from '../../res';
 
-const Signup = ({navigation}) => {
-  return (
-    <View>
-      <ImageBackground
-        source={IL_Background}
-        style={styles.backgroundStyle}
-        resizeMode="cover">
-        <View style={styles.viewStyle1}>
-          <View style={styles.viewStyle2}>
-            <Text style={styles.welcomeStyle}>Register</Text>
-            <Text style={styles.loginAccountStyle}>Create a new account</Text>
-            <TextInput
-              style={styles.inputStyle}
-              placeholderTextColor={colors.primary}
-              placeholder="First Name"
-            />
-            <TextInput
-              style={styles.inputStyle}
-              placeholderTextColor={colors.primary}
-              placeholder="Last Name"
-            />
-            <TextInput
-              style={styles.inputStyle}
-              placeholderTextColor={colors.primary}
-              placeholder="Password"
-              secureTextEntry={true}
-            />
-            <TextInput
-              style={styles.inputStyle}
-              placeholderTextColor={colors.primary}
-              placeholder="City"
-            />
-            <TextInput
-              style={styles.inputStyle}
-              placeholderTextColor={colors.primary}
-              placeholder="Address"
-            />
-            <TextInput
-              style={styles.inputStyle}
-              placeholderTextColor={colors.primary}
-              placeholder="Mobile Phone"
-            />
-            <View style={styles.viewStyle5}>
-              <Text style={styles.textStyle2}>
-                By signing up, you agree to our{' '}
-              </Text>
-              <Text style={styles.textStyle3}>Terms & Conditions </Text>
-              <Text style={styles.textStyle4}>and </Text>
-              <Text style={styles.textStyle5}>Privacy Policy!</Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => alert('Account Created')}
-              style={styles.loginBtnStyle}>
-              <Text style={styles.loginTextStyle}>Signup</Text>
-            </TouchableOpacity>
-            <View style={styles.viewStyle4}>
-              <Text style={styles.textStyle}>Already have an account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                <Text style={styles.signupBtnStyle}>Login</Text>
+export default class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fullName: '',
+      email: '',
+      password: '',
+      address: '',
+      postalCode: '',
+      phoneNumber: '',
+    };
+  }
+
+  postCustomersData = async () => {
+    fetch('http://127.0.0.1:5000/customers', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify({
+        fullName: this.state.fullName,
+        email: this.state.email,
+        password: this.state.password,
+        address: this.state.address,
+        postalCode: this.state.postalCode,
+        phoneNumber: this.state.phoneNumber,
+      }),
+    });
+  };
+
+  submitData = () => {
+    if (
+      this.state.fullName.trim().length !== 0 &&
+      this.state.email.trim().length !== 0 &&
+      this.state.password.trim().length !== 0 &&
+      this.state.address.trim().length !== 0 &&
+      this.state.postalCode.trim().length !== 0 &&
+      this.state.phoneNumber.trim().length !== 0
+    ) {
+      this.postCustomersData();
+      alert('New Customer Has Been Added');
+      this.props.navigation.navigate('Login');
+    } else {
+      alert('All Input Fields Must Have Some Value');
+    }
+  };
+
+  render() {
+    return (
+      <View>
+        <ImageBackground
+          source={IL_Background}
+          style={styles.backgroundStyle}
+          resizeMode="cover">
+          <View style={styles.viewStyle1}>
+            <View style={styles.viewStyle2}>
+              <Text style={styles.welcomeStyle}>Register</Text>
+              <Text style={styles.loginAccountStyle}>Create a new account</Text>
+              <TextInput
+                style={styles.inputStyle}
+                placeholderTextColor={colors.primary}
+                placeholder="Full Name"
+                value={this.state.fullName}
+                onChangeText={text => this.setState({fullName: text})}
+              />
+              <TextInput
+                style={styles.inputStyle}
+                placeholderTextColor={colors.primary}
+                placeholder="Email"
+                keyboardType="email-address"
+                value={this.state.email}
+                onChangeText={text => this.setState({email: text})}
+              />
+              <TextInput
+                style={styles.inputStyle}
+                placeholderTextColor={colors.primary}
+                placeholder="Password"
+                secureTextEntry={true}
+                value={this.state.password}
+                onChangeText={text => this.setState({password: text})}
+              />
+              <TextInput
+                style={styles.inputStyle}
+                placeholderTextColor={colors.primary}
+                placeholder="Address"
+                value={this.state.address}
+                onChangeText={text => this.setState({address: text})}
+              />
+              <TextInput
+                style={styles.inputStyle}
+                placeholderTextColor={colors.primary}
+                placeholder="Postal Code"
+                value={this.state.postalCode}
+                onChangeText={text => this.setState({postalCode: text})}
+              />
+              <TextInput
+                style={styles.inputStyle}
+                placeholderTextColor={colors.primary}
+                placeholder="Mobile Phone"
+                value={this.state.phoneNumber}
+                onChangeText={text => this.setState({phoneNumber: text})}
+              />
+              <View style={styles.viewStyle5}>
+                <Text style={styles.textStyle2}>
+                  By signing up, you agree to our{' '}
+                </Text>
+                <Text style={styles.textStyle3}>Terms & Conditions </Text>
+                <Text style={styles.textStyle4}>and </Text>
+                <Text style={styles.textStyle5}>Privacy Policy!</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => this.submitData()}
+                style={styles.loginBtnStyle}>
+                <Text style={styles.loginTextStyle}>Signup</Text>
               </TouchableOpacity>
+              <View style={styles.viewStyle4}>
+                <Text style={styles.textStyle}>Already have an account? </Text>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Login')}>
+                  <Text style={styles.signupBtnStyle}>Login</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-      </ImageBackground>
-    </View>
-  );
-};
-
-export default Signup;
+        </ImageBackground>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   backgroundStyle: {
