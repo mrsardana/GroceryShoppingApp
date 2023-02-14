@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import GetStarted from '../screens/GetStarted';
-import {Login, MainMenu, Signup} from '../screens';
+import {Login, MainMenu, Signup, ProductsList} from '../screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,9 +25,14 @@ const Router = () => {
         component={Signup}
         options={{headerShown: false}}
       />
-         <Stack.Screen
+      <Stack.Screen
         name="MainMenu"
         component={MainMenu}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProductsList"
+        component={ProductsList}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

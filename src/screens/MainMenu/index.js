@@ -45,7 +45,7 @@ const MainMenu = ({navigation}) => {
         <Text style={styles.btntext}>PROFILE</Text>
       </TouchableOpacity>
       <View style={{padding:5}}></View>
-      <TouchableOpacity style={styles.mainMenuButton}>
+      <TouchableOpacity style={styles.mainMenuButton} onPress={() => navigation.navigate('ProductsList')}>
       <Image style={styles.icons} source={categoryImg}/>
       <Text></Text>
         <Text style={styles.btntext}>CATEGORIES</Text>
