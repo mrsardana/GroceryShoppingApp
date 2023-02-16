@@ -1,13 +1,13 @@
-import GetStarted from './GetStarted/index.js';
 import Background from './Background/index.js';
 import Login from './Login/index.js';
 import Signup from './Signup/index.js';
 import Dashboard from './Dashboard/index.js';
-import Profile from './Profile/index.js';
+import Account from './Account/index.js';
+import ForgetPassword from './ForgetPassword/index.js';
 
-export {GetStarted};
 export {Background};
 export {Login};
 export {Signup};
 export {Dashboard};
-export {Profile};
+export {Account};
+export {ForgetPassword};

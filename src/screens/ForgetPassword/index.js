@@ -1,0 +1,138 @@
+import * as React from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+  StyleSheet,
+} from 'react-native';
+import {colors} from '../../res/colors';
+import {fonts} from '../../res/fonts';
+import {IL_Background} from '../../res';
+
+function ForgetPassword({navigation}) {
+  return (
+    <View>
+      <ImageBackground
+        source={IL_Background}
+        style={styles.backgroundStyle}
+        resizeMode="cover">
+        <View style={styles.viewStyle1}>
+          <View style={styles.viewStyle2}>
+            <Text style={styles.welcomeStyle}>Password Recovery</Text>
+            <Text style={styles.passwordAccountStyle}>
+              Please enter your email address
+            </Text>
+            <Text style={styles.passwordAccountStyle2}>
+              to recover your password
+            </Text>
+            <TextInput
+              style={styles.inputStyle}
+              placeholderTextColor={colors.primary}
+              placeholder="Email / Username"
+              keyboardType={'email-address'}
+            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Login')}
+              style={styles.sendEmailBtnStyle}>
+              <Text style={styles.sendEmailTextStyle}>Send Email</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+export default ForgetPassword;
+
+const styles = StyleSheet.create({
+  backgroundStyle: {
+    width: '100%',
+    aspectRatio: 1,
+    height: 440,
+  },
+  viewStyle1: {
+    alignItems: 'center',
+    width: 460,
+  },
+  viewStyle2: {
+    marginTop: 300,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    height: 700,
+    width: 460,
+    borderTopLeftRadius: 130,
+    paddingTop: 60,
+    alignItems: 'center',
+    fontFamily: fonts.Medium,
+  },
+  welcomeStyle: {
+    fontSize: 40,
+    color: colors.primary,
+    fontWeight: 'bold',
+  },
+  passwordAccountStyle: {
+    color: colors.grey,
+    fontSize: 19,
+    fontWeight: 'bold',
+    marginTop: 40,
+    fontFamily: fonts.Medium,
+  },
+  passwordAccountStyle2: {
+    color: colors.grey,
+    fontSize: 19,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    fontFamily: fonts.Medium,
+  },
+  inputStyle: {
+    borderRadius: 100,
+    color: colors.primary,
+    paddingHorizontal: 10,
+    width: '78%',
+    height: '7%',
+    backgroundColor: 'rgb(220,220, 220)',
+    marginVertical: 15,
+    fontFamily: fonts.Medium,
+  },
+  forgotPassStyle: {
+    color: colors.primary,
+    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: fonts.Medium,
+  },
+  sendEmailBtnStyle: {
+    height: 50,
+    width: 300,
+    borderRadius: 20,
+    fontSize: 18,
+    marginTop: 90,
+    fontFamily: fonts.Medium,
+    backgroundColor: colors.primary,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    color: colors.white,
+    textAlign: 'center',
+    alignItems: 'center',
+    paddingVertical: 5,
+    marginVertical: 10,
+  },
+  sendEmailTextStyle: {
+    color: colors.white,
+    fontSize: 25,
+    fontWeight: 'bold',
+    fontFamily: fonts.Medium,
+  },
+  viewStyle4: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: colors.grey,
+    fontFamily: fonts.Medium,
+  },
+});

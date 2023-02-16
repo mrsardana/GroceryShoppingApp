@@ -35,7 +35,10 @@ const Login = ({navigation}) => {
               secureTextEntry={true}
             />
             <View style={styles.viewStyle3}>
-              <Text style={styles.forgotPassStyle}>Forgot Password?</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('ForgetPassword')}>
+                <Text style={styles.forgotPassStyle}>Forgot Password?</Text>
+              </TouchableOpacity>
             </View>
             <TouchableOpacity
               onPress={() => navigation.navigate('MainApp')}

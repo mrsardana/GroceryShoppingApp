@@ -4,8 +4,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import GetStarted from '../screens/GetStarted';
-import {Dashboard, Login, Profile, Signup} from '../screens';
+import {Dashboard, ForgetPassword, Login, Signup, Account} from '../screens';
 import BottomNavigator from '../components/molecules/BottomNavigator';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -14,7 +15,7 @@ function MainApp() {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen name="Dashboard" component={Dashboard} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
   );
 }
@@ -35,6 +36,11 @@ const Router = () => {
       <Stack.Screen
         name="Signup"
         component={Signup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ForgetPassword"
+        component={ForgetPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen

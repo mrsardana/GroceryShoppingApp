@@ -16,7 +16,7 @@ const Icon = ({label, isFocused}) => {
   switch (label) {
     case 'Dashboard':
       return isFocused ? <IC_Home_color /> : <IC_Home />;
-    case 'Profile':
+    case 'Account':
       return isFocused ? <IC_Profile_color /> : <IC_Profile />;
     default:
       return <IC_Home_color />;
