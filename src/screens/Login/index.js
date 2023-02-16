@@ -38,7 +38,7 @@ const Login = ({navigation}) => {
               <Text style={styles.forgotPassStyle}>Forgot Password?</Text>
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('MainMenu')}
+              onPress={() => alert('Logged In')}
               style={styles.loginBtnStyle}>
               <Text style={styles.loginTextStyle}>Login</Text>
             </TouchableOpacity>
