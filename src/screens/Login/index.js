@@ -35,10 +35,13 @@ const Login = ({navigation}) => {
               secureTextEntry={true}
             />
             <View style={styles.viewStyle3}>
-              <Text style={styles.forgotPassStyle}>Forgot Password?</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('ForgetPassword')}>
+                <Text style={styles.forgotPassStyle}>Forgot Password?</Text>
+              </TouchableOpacity>
             </View>
             <TouchableOpacity
-              onPress={() => alert('Logged In')}
+              onPress={() => navigation.navigate('MainApp')}
               style={styles.loginBtnStyle}>
               <Text style={styles.loginTextStyle}>Login</Text>
             </TouchableOpacity>
