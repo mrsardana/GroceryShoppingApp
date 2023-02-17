@@ -221,8 +221,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 15,
     marginBottom: 15,
-    width: '40%',
-    height: '35%',
+    width: 200,
+    height: 200,
     alignSelf: 'center',
   },
   avatar: {
