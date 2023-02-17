@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   ImageBackground,
@@ -12,6 +12,19 @@ import {fonts} from '../../res/fonts';
 import {IL_Background} from '../../res';
 
 const Login = ({navigation}) => {
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
+  function loginAuth() {
+    if (username === 'test@gmail.com' && password === 'admin') {
+      navigation.navigate('MainApp');
+    } else if (username != 'test@gmail.com') {
+      alert('User does not exist');
+    } else {
+      alert('Wrong Password');
+    }
+  }
+
   return (
     <View>
       <ImageBackground
@@ -27,12 +40,14 @@ const Login = ({navigation}) => {
               placeholderTextColor={colors.primary}
               placeholder="Email / Username"
               keyboardType={'email-address'}
+              onChangeText={setUserName}
             />
             <TextInput
               style={styles.inputStyle}
               placeholderTextColor={colors.primary}
               placeholder="Password"
               secureTextEntry={true}
+              onChangeText={setPassword}
             />
             <View style={styles.viewStyle3}>
               <TouchableOpacity
@@ -41,7 +56,7 @@ const Login = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('MainApp')}
+              onPress={() => loginAuth()}
               style={styles.loginBtnStyle}>
               <Text style={styles.loginTextStyle}>Login</Text>
             </TouchableOpacity>

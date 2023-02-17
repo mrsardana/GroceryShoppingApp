@@ -6,7 +6,7 @@ import React from 'react';
 import GetStarted from '../screens/GetStarted';
 import {Dashboard, ForgetPassword, Login, Signup, Account} from '../screens';
 import BottomNavigator from '../components/molecules/BottomNavigator';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Categories from '../screens/Categories';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -14,7 +14,11 @@ const Tab = createBottomTabNavigator();
 function MainApp() {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-      <Tab.Screen name="Dashboard" component={Dashboard} />
+      <Tab.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{headerShown: false}}
+      />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
   );
@@ -46,6 +50,11 @@ const Router = () => {
       <Stack.Screen
         name="MainApp"
         component={MainApp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Categories"
+        component={Categories}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
